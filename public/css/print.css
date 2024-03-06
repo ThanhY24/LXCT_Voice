@@ -1,0 +1,126 @@
+@media print {
+    body {
+        padding: 5px;
+    }
+    .inv-container {
+        font-family: "Times New Roman", Times, serif;
+        font-size: 17px;
+        width: 80mm;
+        height: auto;
+        min-height: 100px;
+        padding: 10px;
+        padding-bottom: 5px;
+        display: block;
+    }
+    .inv-header-name {
+        text-align: center;
+        font-weight: 600;
+        margin: 0;
+    }
+    .inv-header-line {
+        margin: 0 auto;
+        border-bottom: 1px solid;
+        width: 35%;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    .inv-header-address {
+        margin: 0;
+        margin-top: 5px;
+        box-sizing: border-box;
+        text-align: center;
+        font-size: 14px;
+    }
+    .inv-header-phone {
+        margin: 0;
+        margin-top: 5px;
+        text-align: center;
+        font-size: 14px;
+        margin-top: 0;
+    }
+    .inv-header-date {
+        text-align: center;
+        font-size: 13px;
+        margin: 0;
+    }
+    .inv-header-title {
+        margin: 0 auto;
+        text-align: center;
+        font-size: 20px;
+        font-weight: 700;
+    }
+    .inv-header-title-id {
+        margin: 0;
+        text-align: center;
+        margin-bottom: 5px;
+        font-size: 13px;
+    }
+    .inv-body-item {
+        margin: 0;
+        margin: 5px 0;
+        /* font-weight: 600; */
+    }
+    .inv-body-item > span {
+        font-weight: 500;
+        display: inline-block;
+        width: 30%;
+    }
+    .registration-container {
+        display: flex;
+        width: 100%;
+        margin: 5px auto;
+        height: 50px;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+        font-weight: 700;
+    }
+
+    .registration-container > p {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid;
+        height: 40px;
+    }
+    .registration-container > p:nth-child(1) {
+        font-size: 25px;
+        font-weight: 600;
+    }
+    .inv-body-note {
+        margin: 0;
+        font-size: 15px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+    .inv-footer-text {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        padding: 5px 0;
+        font-size: 12px;
+        text-align: center;
+        border-bottom: 1px solid;
+    }
+    .qrCode-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: left;
+        align-items: center;
+        width: 100%;
+        height: 70px;
+        padding-bottom: 10px;
+        box-sizing: border-box;
+        margin-top: 10px;
+    }
+    #qrcode {
+        width: 70px;
+        height: 70px;
+    }
+    .qrcode-content {
+        width: 70%;
+        margin-left: 10px;
+        font-size: 12px;
+    }
+}

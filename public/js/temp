@@ -1,0 +1,161 @@
+var index = 0;
+var isEndedHandled = false;
+var dataRead = [];
+var codeExam = "";
+const csrfToken = document
+    .querySelector('meta[name="csrf-token"]')
+    .getAttribute("content");
+function keyPress(event) {
+    if (index < dataRead.length) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            updateInfoStudent(index);
+            voice1();
+        }
+    } else {
+        console.log(index);
+        alert("Đã đọc hết tên học viên");
+    }
+}
+function handleEnded() {
+    if (!isEndedHandled) {
+        isEndedHandled = true;
+        voice2();
+    }
+}
+function voice1() {
+    var studentVoice = document.getElementById("studentVoice");
+    console.log(
+        "audios/examinations/" +
+            codeExam +
+            "/" +
+            dataRead[index]["hoc_vien"]["voice_hocvien"]
+    );
+    studentVoice.src =
+        "audios/examinations/" +
+        codeExam +
+        "/" +
+        dataRead[index]["hoc_vien"]["voice_hocvien"];
+    studentVoice.type = "audio/mp3";
+    studentVoice.autoplay = true;
+    isEndedHandled = false;
+    studentVoice.addEventListener("ended", handleEnded);
+}
+
+function voice2() {
+    var typeReadVoice = document.getElementById("typeReadVoice");
+    fileTypeRead = typeRead == "lythuyet" ? "lythuyet.mp3" : "mophong.mp3";
+    console.log(fileTypeRead);
+    typeReadVoice.src = "audios/other/" + fileTypeRead;
+    typeReadVoice.type = "audio/mp3";
+    typeReadVoice.autoplay = true;
+    isEndedHandled = false;
+    moveElementToEndAndUpdateIndex(dataRead);
+    updateData();
+    loadData();
+}
+
+function updateInfoStudent(i) {
+    var typeReadText = " lý thuyết ";
+    if (dataRead[i]["typeRead"] == "audios/other/mophong.mp3") {
+        typeReadText = " mô phỏng.";
+    }
+    var studentVoiceText =
+        "Mời " +
+        dataRead[i]["hoten_hocvien"] +
+        " có số báo danh " +
+        dataRead[i]["sobaodanh_doc"] +
+        " vào phòng thi" +
+        typeReadText;
+    document.getElementById("student-voice-text").innerHTML = studentVoiceText;
+}
+function moveElementToEndAndUpdateIndex(data) {
+    const firstElement = data.shift();
+    data.push(firstElement);
+    updateIndexInData(data);
+}
+
+function updateIndexInData(data) {
+    for (let i = 0; i < data.length; i++) {
+        data[i]["stt_doc"] = i + 1;
+    }
+    console.log(data);
+}
+function renderTable(data) {
+    studentTable = "";
+    data.forEach((item, i) => {
+        studentTable += `<tr class="bg-table">
+                    <td>${i + 1}</td>
+                    <td>${item["sobaodanh_doc"]}</td>
+                    <td style="text-align:left">${item["hoten_hocvien"]}</td>
+                    <td style="text-align:left">${
+                        item["uutien_doc"] == "1" ? "Có" : "Không"
+                    }</td>
+                </tr>`;
+    });
+    studentTable =
+        `<tr style="height:30px">
+<th style="position:sticky; top:0;background-color:#f1d96e">STT</th>
+<th style="position:sticky; top:0;background-color:#f1d96e">Số báo danh</th>
+<th style="position:sticky; top:0;background-color:#f1d96e">Tên học viên</th>
+<th style="position:sticky; top:0;background-color:#f1d96e">Ưu tiên</th>
+</tr>` + studentTable;
+    document.getElementById("student-table").innerHTML = studentTable;
+}
+function getParameterValue(parameterName, url) {
+    url = url || window.location.href;
+    var regex = new RegExp("[?&]" + parameterName + "(=([^&#]*)|&|#|$)");
+    var results = regex.exec(url);
+
+    if (!results || !results[2]) {
+        return null;
+    }
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+// Load trang
+document.addEventListener("DOMContentLoaded", loadData());
+// Hàm load dữ liệu mới
+function loadData() {
+    const typeRead = document.getElementById("typeRead").value;
+    const idExaminations = document.getElementById("idExaminations").value;
+    const url = "/read";
+    const data = {
+        typeRead: typeRead,
+        idExaminations: idExaminations,
+    };
+    const options = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-TOKEN": csrfToken,
+        },
+        body: JSON.stringify(data),
+    };
+    fetch(url, options)
+        .then((response) => response.json())
+        .then((data) => {
+            dataRead = data.dataRead;
+            codeExam = data.codeExaminations;
+            console.log(dataRead);
+            renderTable(data.dataRead);
+        })
+        .catch((error) => console.error(error));
+}
+function updateData() {
+    const url = "/read";
+    const data = {
+        dataRead: dataRead,
+    };
+    const options = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-TOKEN": csrfToken,
+        },
+        body: JSON.stringify({ dataRead: dataRead }),
+    };
+    fetch(url, options)
+        .then((response) => response.json())
+        .then((data) => {})
+        .catch((error) => console.error(error));
+}

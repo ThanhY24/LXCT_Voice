@@ -1,0 +1,374 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+body {
+    line-height: 1;
+    position: relative;
+}
+ol,
+ul {
+    list-style: none;
+}
+blockquote,
+q {
+    quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: "";
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.bg-green {
+    background-color: #005e38;
+}
+.bg-main {
+    background-color: #f5ca00;
+    opacity: 1;
+}
+.color-white {
+    color: white;
+}
+button {
+    outline: none;
+    border: none;
+}
+.main {
+    width: 100%;
+    height: 90vh;
+    font-family: "Montserrat", sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5px;
+    box-sizing: border-box;
+}
+.list-left {
+    width: 25%;
+    height: 100%;
+}
+.list-left > .msg {
+    width: 100%;
+    min-height: 30px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    padding: 3px;
+    padding-left: 10px;
+    box-sizing: border-box;
+    background-color: #f1d96e;
+}
+.list-right {
+    width: 74%;
+    height: 100%;
+}
+.card {
+    width: 100%;
+    height: auto;
+    background-color: #f1d96e;
+}
+.card-header {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5ca00;
+    color: white;
+    font-weight: 600;
+}
+.card-body {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+    padding: 5px;
+    box-sizing: border-box;
+}
+.card-checkbox {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+.list-course-row {
+    width: 100%;
+}
+.list-course-row > label {
+    display: flex;
+    width: 100%;
+    height: 25px;
+}
+.list-course-row > select {
+    width: 100%;
+    height: 35px;
+    outline: none;
+}
+.list-course-row > button {
+    width: 150px;
+    height: 30px;
+    margin-top: 5px;
+    font-family: inherit;
+    font-weight: 600;
+}
+.form-input {
+    width: 100%;
+    height: 30px;
+    outline: none;
+}
+.student-form {
+    width: 100%;
+}
+.student-form > label {
+    display: flex;
+    width: 100%;
+    height: 25px;
+}
+.student-form > select {
+    width: 100%;
+    height: 35px;
+    outline: none;
+}
+.student-form > button {
+    width: 150px;
+    height: 30px;
+    margin-top: 5px;
+}
+.table1 {
+    width: 100%;
+}
+.table1 > tbody > tr > td {
+    padding: 5px;
+    box-sizing: border-box;
+    text-align: center;
+    border: 1px solid green;
+}
+.table1 > tbody > tr > td > a {
+    text-decoration: none;
+    display: flex;
+    padding: 5px;
+    box-sizing: border-box;
+    justify-content: center;
+}
+.table1 > tbody > tr > th {
+    padding: 5px;
+    box-sizing: border-box;
+    text-align: center;
+    border: 1px solid green;
+    font-weight: 600;
+}
+.bg-table {
+    background-color: #fffcec;
+}
+.bg-table-custom {
+    background-color: #3fd17c;
+}
+.info-student {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.info-student-left {
+    display: flex;
+    align-items: center;
+}
+.info-student-left > img {
+    width: 3cm;
+    height: 4cm;
+}
+.info-student-right {
+    width: 100%;
+    margin-left: 20px;
+}
+.info-student-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 35px;
+    margin: 5px 0px;
+}
+.info-student-col {
+    width: 300px;
+    margin-right: 20px;
+}
+.info-student-col > span:nth-child(1) {
+    display: inline-block;
+    width: 100px;
+}
+.info-student-col > span:nth-child(2) {
+    font-weight: 700;
+}
+.card-student {
+    border: 1px solid #005e38;
+    background-color: unset;
+}
+/* Radio Customer */
+.radio-custom-container {
+    width: 100%;
+    height: 30px;
+    margin: 10px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.radio-custom-container input {
+    display: none;
+}
+
+[type="radio"]:checked + label {
+    transition: 0.5s;
+    border: none;
+    background-color: #005e38;
+    color: white;
+}
+
+.radio-custom-container > label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45%;
+    height: 30px;
+    border: 1px solid #005e38;
+    position: relative;
+    user-select: none;
+    cursor: pointer;
+    font-size: 13px;
+}
+.radio-custom-container > label > input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+}
+.student-voice-text-hightlight {
+    font-size: 20px;
+    font-weight: 700;
+}
+.p_button {
+    display: flex;
+    padding: 3px;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    background-color: #005e38;
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+.p_button :hover {
+    opacity: 0.5;
+}
